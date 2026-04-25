@@ -373,6 +373,28 @@ opacity: 0; transition: opacity 0.3s ease;
 .btn-emergency:hover{ transform: translateY(-4px) scale(1.02); box-shadow: 0 20px 50px rgba(255, 107, 53, 0.5), 0 0 40px rgba(212, 175, 55, 0.4); animation: none; }
 .btn-emergency:hover::after{ opacity: 1; }
 
+/* BOTÓN INSTAGRAM - Visible y elegante */
+.btn-instagram{
+background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+color: #fff;
+font-weight: 600;
+padding: 0.5rem 1rem;
+border-radius: 8px;
+cursor: pointer;
+transition: all 0.3s ease;
+font-size: 0.875rem;
+display: flex;
+align-items: center;
+gap: 0.5rem;
+box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3);
+}
+.btn-instagram:hover{
+transform: translateY(-2px);
+box-shadow: 0 8px 25px rgba(220, 39, 67, 0.5);
+filter: brightness(1.1);
+}
+.btn-instagram i{ font-size: 1.1rem; }
+
 /* Scrollbar personalizado*/
 ::-webkit-scrollbar{ width: 8px; height: 8px; }
 ::-webkit-scrollbar-track{ background: rgba(26, 26, 26, 0.6); border-radius: 4px; }
@@ -493,6 +515,10 @@ transition: all 0.2s;
 <div class="ml-auto flex items-center gap-3 md:gap-5">
 <!-- Language Switcher -->
 <button id="langToggle" class="lang-switcher flex items-center gap-2"><i class="fa-solid fa-language"></i><span id="langText">EN</span></button>
+<!-- Botón Instagram Visible -->
+<a href="https://www.instagram.com/villaamilemiliano?utm_source=qr&igsh=bHFzcW1sMnFyejl0" target="_blank" rel="noopener noreferrer" class="btn-instagram" title="Síguenos en Instagram">
+<i class="fa-brands fa-instagram"></i><span class="hidden sm:inline">Instagram</span>
+</a>
 <div id="status-badge-desktop" class="hidden md:flex items-center px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs font-semibold uppercase tracking-wide bg-white/5 border border-white/10 hover:border-primary-green/40 transition-all">
 <span id="status-dot-desktop" class="status-dot w-2 h-2 rounded-full mr-2.5 bg-primary-green"></span>
 <span id="status-text-desktop" class="text-primary-green font-semibold" data-es="Abierto 24/7" data-en="Open 24/7">Abierto 24/7</span>
