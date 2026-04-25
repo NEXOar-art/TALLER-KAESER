@@ -91,9 +91,10 @@ color:#E2E8F0;
 font-feature-settings:"cv02","cv03","cv04","cv11";
 overflow-x: hidden;
 position: relative;
+padding-top: 56px;
 }
 
-/* ========== BANNER INFORMATIVO INTELIGENTE ========== */
+/* ========== BANNER INFORMATIVO - SIEMPRE VISIBLE SIN PARAR ========== */
 .info-banner{
 position: fixed;
 top: 0;
@@ -134,12 +135,8 @@ position: relative;
 .banner-text{
 display: inline-flex;
 white-space: nowrap;
-animation: bannerScroll 30s linear infinite;
+animation: bannerScroll 25s linear infinite;
 padding-left: 100%;
-}
-
-.banner-text:hover{
-animation-play-state: paused;
 }
 
 .banner-item{
@@ -168,55 +165,23 @@ opacity: 0.6;
 100%{ transform: translateX(-100%); }
 }
 
-.banner-close{
-flex-shrink: 0;
-background: rgba(212, 175, 55, 0.2);
-border: 1px solid #D4AF37;
-color: #D4AF37;
-width: 32px;
-height: 32px;
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-cursor: pointer;
-margin-right: 20px;
-transition: all 0.3s ease;
-font-size: 1rem;
-}
+#navbar{ top: 56px !important; }
 
-.banner-close:hover{
-background: #D4AF37;
-color: #0A0A0A;
-transform: rotate(90deg);
-}
-
-/* Ajuste para cuando el banner está visible */
-body.banner-visible{ padding-top: 60px; }
-body.banner-visible #navbar{ top: 60px; }
-body.banner-visible .fixed.bottom-24{ bottom: 144px; }
-
-/* Responsive Banner */
 @media (max-width: 768px){
 .banner-item{ font-size: 0.85rem; margin: 0 25px; }
 .banner-item i{ font-size: 0.9rem; }
 .info-banner-icon{ margin-left: 10px; margin-right: 10px; }
-.banner-close{ margin-right: 10px; }
-body.banner-visible{ padding-top: 50px; }
-body.banner-visible #navbar{ top: 50px; }
+body{ padding-top: 50px; }
+#navbar{ top: 50px !important; }
 }
 
 @media (max-width: 475px){
 .banner-item{ font-size: 0.75rem; margin: 0 15px; }
 .banner-divider{ margin: 0 10px; }
 .info-banner-icon i{ font-size: 1.2rem; }
+body{ padding-top: 46px; }
+#navbar{ top: 46px !important; }
 }
-
-@keyframes slideDown{
-from{ transform: translateY(-100%); }
-to{ transform: translateY(0); }
-}
-.info-banner.animated{ animation: slideDown 0.5s ease-out; }
 /* ========== FIN BANNER INFORMATIVO ========== */
 
 /* Background Image with Animation */
@@ -492,10 +457,10 @@ transition: all 0.2s;
 .modal-close:hover{ background: rgba(212, 175, 55, 0.3); transform: rotate(90deg); }
 </style>
 </head>
-<body class="antialiased relative banner-visible">
+<body class="antialiased relative">
 
-<!-- ========== BANNER INFORMATIVO INTELIGENTE ========== -->
-<div class="info-banner animated" id="infoBanner">
+<!-- ========== BANNER INFORMATIVO - SIEMPRE VISIBLE ========== -->
+<div class="info-banner" id="infoBanner">
 <div class="info-banner-wrapper">
 <div class="info-banner-icon"><i class="fa-solid fa-lightbulb"></i></div>
 <div class="banner-scroll-container">
@@ -509,7 +474,6 @@ transition: all 0.2s;
 <div class="banner-item"><i class="fa-solid fa-hand-pointer"></i><span>Tres hábitos simples = menos consumo, menos fallas y más años de motor</span><i class="fa-solid fa-circle-check"></i></div>
 </div>
 </div>
-<button class="banner-close" id="bannerClose" title="Cerrar banner" aria-label="Cerrar banner"><i class="fa-solid fa-xmark"></i></button>
 </div>
 </div>
 <!-- ========== FIN BANNER INFORMATIVO ========== -->
@@ -520,11 +484,14 @@ transition: all 0.2s;
 <!-- NAVBAR-->
 <nav class="fixed w-full z-50 glass border-b border-white/10 transition-all duration-300" id="navbar">
 <div class="container mx-auto px-4 h-16 md:h-20 flex items-center relative">
+<!-- LOGO -->
 <a href="#" class="flex items-center md:absolute md:left-4 md:translate-x-0">
 <img src="TALLERKAISER.png" alt="Taller Kaiser Logo" class="navbar-logo">
 </a>
+<!-- Título centrado -->
 <a href="#" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:static md:translate-x-0 md:translate-y-0 md:ml-auto md:mr-auto font-display font-bold text-lg sm:text-xl md:text-2xl gradient-text tracking-tight uppercase text-center md:text-left drop-shadow-lg" data-es="TALLER KAISER" data-en="TALLER KAISER">TALLER KAISER</a>
 <div class="ml-auto flex items-center gap-3 md:gap-5">
+<!-- Language Switcher -->
 <button id="langToggle" class="lang-switcher flex items-center gap-2"><i class="fa-solid fa-language"></i><span id="langText">EN</span></button>
 <div id="status-badge-desktop" class="hidden md:flex items-center px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs font-semibold uppercase tracking-wide bg-white/5 border border-white/10 hover:border-primary-green/40 transition-all">
 <span id="status-dot-desktop" class="status-dot w-2 h-2 rounded-full mr-2.5 bg-primary-green"></span>
@@ -541,15 +508,21 @@ transition: all 0.2s;
 
 <!-- Botones flotantes premium -->
 <div class="fixed bottom-24 md:bottom-8 right-4 z-50 animate-float flex flex-col gap-3">
-<a href="https://api.whatsapp.com/send?phone=59898884992" target="_blank" rel="noopener noreferrer" class="bg-[#25D366] hover:bg-[#128C7E] text-white p-3.5 md:p-4 rounded-full shadow-lg transition-all hover:scale-110 flex items-center justify-center gap-2 group" title="Chat directo por WhatsApp" style="animation: float 6s ease-in-out infinite;">
+<!-- WhatsApp directo -->
+<a href="https://api.whatsapp.com/send?phone=59898884992" target="_blank" rel="noopener noreferrer"
+class="bg-[#25D366] hover:bg-[#128C7E] text-white p-3.5 md:p-4 rounded-full shadow-lg transition-all hover:scale-110 flex items-center justify-center gap-2 group"
+title="Chat directo por WhatsApp" style="animation: float 6s ease-in-out infinite;">
 <i class="fa-brands fa-whatsapp text-2xl md:text-3xl"></i><span class="hidden lg:inline text-xs font-bold whitespace-nowrap">Chat</span>
 </a>
+<!-- Botón de Auxilio Mecánico -->
 <button id="btnEmergency" class="btn-emergency px-4 py-3 md:px-5 md:py-3.5 rounded-2xl transition flex items-center gap-2 text-xs md:text-sm font-extrabold group shadow-lg">
 <span class="hidden xs:inline">AUXILIO MECÁNICO 24/7</span><span class="xs:hidden">AUXILIO</span>
 </button>
+<!-- Pedir Turno -->
 <a href="#diagnostico" class="btn-primary px-5 py-3 md:px-7 md:py-3.5 rounded-2xl shadow-neon transition flex items-center gap-2.5 hover:shadow-glow text-sm font-semibold group">
 <i class="fa-solid fa-calendar-check text-lg"></i><span class="hidden xs:inline" data-es="Pedir Turno" data-en="Book Appointment">Pedir Turno</span><i class="fa-solid fa-arrow-right ml-1 group-hover:translate-x-1 transition-transform"></i>
 </a>
+<!-- Botón de Reseñas -->
 <a href="https://maps.app.goo.gl/Gqnoq9D5431ujpGu9" target="_blank" rel="noopener noreferrer" class="btn-review px-4 py-2.5 md:px-5 md:py-3 rounded-xl shadow-lg transition flex items-center gap-2 text-xs md:text-sm font-semibold group animate-float" style="animation-delay: 0.5s;">
 <i class="fa-solid fa-star text-lg"></i><span class="hidden xs:inline" data-es="Deja tu Reseña" data-en="Leave Review">Deja tu Reseña</span>
 </a>
@@ -619,6 +592,7 @@ transition: all 0.2s;
 <img src="TALLERKAISER.png" alt="Taller Kaiser Logo" class="hero-logo flex-shrink-0">
 </h1>
 <p class="text-gray-300/90 text-base md:text-lg max-w-xl description-text fade-in-up leading-relaxed" style="animation-delay: 0.3s;" data-es="Tu vehículo habla. Nosotros escuchamos con tecnología de punta. Pre-carga síntomas y recibe un diagnóstico preciso antes de visitar nuestro taller." data-en="Your vehicle speaks. We listen with cutting-edge technology. Pre-load symptoms and receive an accurate diagnosis before visiting our workshop.">Tu vehículo habla. Nosotros escuchamos con tecnología de punta. Pre-carga síntomas y recibe un diagnóstico preciso antes de visitar nuestro taller.</p>
+<!-- Stats animados-->
 <div class="grid grid-cols-3 gap-3 md:gap-5 pt-2 md:pt-4 fade-in-up" style="animation-delay: 0.5s;">
 <div class="text-center p-3 rounded-xl bg-white/5 border border-white/10 hover:border-primary-green/30 transition">
 <span class="block text-2xl md:text-3xl font-bold gradient-text"><span id="counter1" data-target="99">0</span>%</span><span class="text-xs text-gray-400 mt-1 block" data-es="Precisión" data-en="Accuracy">Precisión</span>
@@ -630,6 +604,7 @@ transition: all 0.2s;
 <span class="block text-2xl md:text-3xl font-bold gradient-text"><span id="counter3" data-target="8000">0</span>+</span><span class="text-xs text-gray-400 mt-1 block" data-es="Vehículos" data-en="Vehicles">Vehículos</span>
 </div>
 </div>
+<!-- CTAs-->
 <div class="flex flex-col sm:flex-row gap-3.5 pt-2 fade-in-up" style="animation-delay: 0.6s;">
 <a href="#diagnostico" class="btn-primary px-6 py-3.5 rounded-xl uppercase tracking-wide flex items-center justify-center gap-2.5 group text-sm font-semibold shadow-neon">
 <span data-es="Iniciar Diagnóstico" data-en="Start Diagnosis">Iniciar Diagnóstico</span><i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
@@ -657,6 +632,7 @@ transition: all 0.2s;
 <p class="text-gray-400/90 max-w-2xl mx-auto text-base md:text-lg leading-relaxed" data-es="Detecta fallas en etapas tempranas y evita reparaciones costosas. Aprende a identificar las señales clave de tu vehículo." data-en="Detect failures at early stages and avoid expensive repairs. Learn to identify the key signals of your vehicle.">Detecta fallas en etapas tempranas y evita reparaciones costosas. Aprende a identificar las señales clave de tu vehículo.</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
+<!-- Card 1-->
 <div class="glass-card hover-lift">
 <div class="relative h-44 md:h-48 overflow-hidden rounded-t-2xl">
 <img src="https://placehold.co/600x400/32CD32/0A0A0A?text=FRENOS" alt="Sistema de frenos" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
@@ -669,6 +645,7 @@ transition: all 0.2s;
 <a href="#diagnostico" class="text-primary-green hover:text-green-300 font-semibold text-sm flex items-center gap-1.5 group"><span data-es="Analizar ahora" data-en="Analyze now">Analizar ahora</span><i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i></a>
 </div>
 </div>
+<!-- Card 2-->
 <div class="glass-card hover-lift">
 <div class="relative h-44 md:h-48 overflow-hidden rounded-t-2xl">
 <img src="https://placehold.co/600x400/2D2D2D/32CD32?text=BATERIA" alt="Sistema eléctrico" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
@@ -681,6 +658,7 @@ transition: all 0.2s;
 <a href="#diagnostico" class="text-primary-green hover:text-green-300 font-semibold text-sm flex items-center gap-1.5 group"><span data-es="Verificar sistema" data-en="Check system">Verificar sistema</span><i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i></a>
 </div>
 </div>
+<!-- Card 3-->
 <div class="glass-card hover-lift">
 <div class="relative h-44 md:h-48 overflow-hidden rounded-t-2xl">
 <img src="https://placehold.co/600x400/228B22/0A0A0A?text=FLUIDOS" alt="Fluidos críticos" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
@@ -784,6 +762,7 @@ transition: all 0.2s;
 <div class="absolute inset-0 bg-[radial-gradient(circle_at_60%_40%,rgba(50,205,50,0.08),transparent_55%)]"></div>
 <div class="container mx-auto px-4 relative z-10">
 <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+<!-- Columna informativa-->
 <div class="lg:w-1/3 space-y-6">
 <h2 class="font-display font-bold text-4xl md:text-5xl text-white mb-2 glow-text tracking-tight">
 <span data-es="ACELERADOR DE<br>DIAGNÓSTICO" data-en="DIAGNOSIS<br>ACCELERATOR">ACELERADOR DE<br><span class="gradient-text">DIAGNÓSTICO</span></span>
@@ -799,6 +778,7 @@ transition: all 0.2s;
 <div><p class="text-sm font-semibold text-white" data-es="Datos 100% seguros" data-en="100% secure data">Datos 100% seguros</p><p class="text-xs text-gray-500" data-es="Tu información está protegida" data-en="Your information is protected">Tu información está protegida</p></div>
 </div>
 </div>
+<!-- Formulario-->
 <div class="lg:w-2/3 glass-card rounded-3xl shadow-card p-6 md:p-8 w-full">
 <form id="triageForm" class="space-y-7">
 <div class="border-b border-white/10 pb-5">
@@ -1119,7 +1099,6 @@ emergencyModal?.addEventListener('click', (e) => { if(e.target === emergencyModa
 emergencyForm?.addEventListener('submit', (e) => {
 e.preventDefault();
 const location = document.getElementById('emergencyLocation').value;
-const breakdown = document.getElementById('emergencyBreakdown').value;
 const breakdownText = document.getElementById('emergencyBreakdown').options[document.getElementById('emergencyBreakdown').selectedIndex]?.text || 'No especificado';
 const vehicle = document.getElementById('emergencyVehicle').value;
 const name = document.getElementById('emergencyName').value;
@@ -1144,20 +1123,6 @@ submitBtn.innerHTML = originalContent;
 submitBtn.disabled = false;
 }, 2000);
 });
-
-// ========== BANNER INFORMATIVO ==========
-const bannerClose = document.getElementById('bannerClose');
-const infoBanner = document.getElementById('infoBanner');
-bannerClose?.addEventListener('click', () => {
-infoBanner.style.transform = 'translateY(-100%)';
-infoBanner.style.transition = 'transform 0.5s ease';
-document.body.classList.remove('banner-visible');
-localStorage.setItem('bannerClosed', 'true');
-});
-if(localStorage.getItem('bannerClosed') === 'true'){
-infoBanner.style.display = 'none';
-document.body.classList.remove('banner-visible');
-}
 
 // Parallax
 const parallaxImg= document.getElementById('parallax-img');
