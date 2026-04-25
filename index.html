@@ -373,27 +373,27 @@ opacity: 0; transition: opacity 0.3s ease;
 .btn-emergency:hover{ transform: translateY(-4px) scale(1.02); box-shadow: 0 20px 50px rgba(255, 107, 53, 0.5), 0 0 40px rgba(212, 175, 55, 0.4); animation: none; }
 .btn-emergency:hover::after{ opacity: 1; }
 
-/* BOTÓN INSTAGRAM - Visible y elegante */
+/* BOTÓN INSTAGRAM - Solo icono, mejor posicionado */
 .btn-instagram{
 background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
 color: #fff;
-font-weight: 600;
-padding: 0.5rem 1rem;
-border-radius: 8px;
+padding: 0.6rem;
+border-radius: 10px;
 cursor: pointer;
 transition: all 0.3s ease;
-font-size: 0.875rem;
 display: flex;
 align-items: center;
-gap: 0.5rem;
+justify-content: center;
 box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3);
+width: 40px;
+height: 40px;
 }
 .btn-instagram:hover{
-transform: translateY(-2px);
+transform: translateY(-2px) scale(1.05);
 box-shadow: 0 8px 25px rgba(220, 39, 67, 0.5);
 filter: brightness(1.1);
 }
-.btn-instagram i{ font-size: 1.1rem; }
+.btn-instagram i{ font-size: 1.2rem; }
 
 /* Scrollbar personalizado*/
 ::-webkit-scrollbar{ width: 8px; height: 8px; }
@@ -512,18 +512,18 @@ transition: all 0.2s;
 </a>
 <!-- Título centrado -->
 <a href="#" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:static md:translate-x-0 md:translate-y-0 md:ml-auto md:mr-auto font-display font-bold text-lg sm:text-xl md:text-2xl gradient-text tracking-tight uppercase text-center md:text-left drop-shadow-lg" data-es="TALLER MECANICO KAESER" data-en="TALLER MECANICO KAESER">TALLER MECANICO KAESER</a>
-<div class="ml-auto flex items-center gap-3 md:gap-5">
-<!-- Language Switcher -->
-<button id="langToggle" class="lang-switcher flex items-center gap-2"><i class="fa-solid fa-language"></i><span id="langText">EN</span></button>
-<!-- Botón Instagram Visible -->
-<a href="https://www.instagram.com/villaamilemiliano?utm_source=qr&igsh=bHFzcW1sMnFyejl0" target="_blank" rel="noopener noreferrer" class="btn-instagram" title="Síguenos en Instagram">
-<i class="fa-brands fa-instagram"></i><span class="hidden sm:inline">Instagram</span>
+<div class="ml-auto flex items-center gap-2 md:gap-3">
+<!-- Botón Instagram - Solo icono, mejor posicionado -->
+<a href="https://www.instagram.com/villaamilemiliano?utm_source=qr&igsh=bHFzcW1sMnFyejl0" target="_blank" rel="noopener noreferrer" class="btn-instagram order-1 md:order-2" title="Síguenos en Instagram">
+<i class="fa-brands fa-instagram"></i>
 </a>
-<div id="status-badge-desktop" class="hidden md:flex items-center px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs font-semibold uppercase tracking-wide bg-white/5 border border-white/10 hover:border-primary-green/40 transition-all">
+<!-- Language Switcher -->
+<button id="langToggle" class="lang-switcher flex items-center gap-2 order-2 md:order-3"><i class="fa-solid fa-language"></i><span id="langText">EN</span></button>
+<div id="status-badge-desktop" class="hidden md:flex items-center px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs font-semibold uppercase tracking-wide bg-white/5 border border-white/10 hover:border-primary-green/40 transition-all order-4">
 <span id="status-dot-desktop" class="status-dot w-2 h-2 rounded-full mr-2.5 bg-primary-green"></span>
 <span id="status-text-desktop" class="text-primary-green font-semibold" data-es="Abierto 24/7" data-en="Open 24/7">Abierto 24/7</span>
 </div>
-<div class="hidden md:flex items-center gap-3 lg:gap-5">
+<div class="hidden md:flex items-center gap-3 lg:gap-5 order-5">
 <a href="#asesoramiento" class="text-gray-300 hover:text-primary-green transition text-sm lg:text-base font-medium relative group" data-es="Asesoramiento" data-en="Consultation">Asesoramiento<span class="absolute bottom-1 left-0 w-0 h-0.5 bg-primary-green transition-all group-hover:w-full"></span></a>
 <a href="#diagnostico" class="btn-primary px-4 lg:px-6 py-2 lg:py-2.5 rounded-xl font-bold transition shadow-neon uppercase text-xs lg:text-sm tracking-wide" data-es="Pre-Diagnóstico" data-en="Pre-Diagnosis">Pre-Diagnóstico</a>
 </div>
